@@ -1,0 +1,41 @@
+.container{
+    width: 90%;
+}
+
+.navbar{
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand{
+    margin-right: 100px;
+}
+
+.dashboard-side{
+    background:#FBFBFD;
+    padding-left: 4rem;
+    padding-top: 3rem;
+
+}
+
+.dashboard-content{
+    background:#F5F6FA;
+    padding:1.5rem 3.5rem;
+    height: 100vh;
+    margin:auto;
+}
+
+.section-heading{
+    display:flex;
+    border-bottom: 2px solid #333;
+    margin-bottom: 2rem;
+    justify-content:space-between ;
+
+}
+
+
+
+.icon-text{
+    display: flex;
+    align-items: center;
+  
+}
+

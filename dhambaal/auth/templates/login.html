@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{%block content%}
+{% from 'helpers/form_input.html' import form_input%}
+<div class="columns">
+    {%include 'login_side_left.html'%}
+    <!-- Login side left -->
+    <div class="column">
+    <!-- Display Flashed Messages -->
+   
+    <form method="POST">
+        {{form.csrf_token()}}
+        {{form_input(label=form.email.label,errors=form.email.errors,name=form.email,type='input')}}
+        {{form_input(label=form.password.label,errors=form.password.errors,name=form.password,type='input')}}
+        {{form.submit(class="button is-primary")}}
+    </form>
+
+    </div>
+
+
+</div>
+{%endblock content%}
+
+
+
+
+

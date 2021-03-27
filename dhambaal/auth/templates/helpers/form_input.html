@@ -1,0 +1,12 @@
+{% macro form_input(label=None,errors=None,name=None,type="input")%}
+<div class="field">
+  {{label(class='label')}} {%if errors %} {%for error in errors %}
+  <div class="control">
+    {{name(class=type+' is-danger')}}
+    <div class="has-text-weight-light has-text-danger">{{error}}</div>
+  </div>
+  {%endfor%} {%else%}
+  <div class="control">{{name(class=type)}}</div>
+  {%endif%}
+</div>
+{%endmacro%}

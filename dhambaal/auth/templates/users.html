@@ -1,0 +1,29 @@
+{% extends "layout/base.html" %}
+ {% block content %}
+{%from "macros.html" import section_heading %}
+{{section_heading(title="Users", link="auth.register_user", btn_text="Create user")}}
+<table class="table box">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>usurname</th>
+      <th>password</th>
+     <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for user in users%} 
+    <tr>
+    <td>{{user.id}}</td>
+      <td><a href="#" >
+      {{user.name}}
+      </td>
+      <td>{{user.email}}</td>
+      <td>{{post.username}}</td>
+      <td>{{post.create_at}}</td>
+    </tr>
+    {%endfor%}
+    </tbody>
+    </table>
+    {% endblock %}

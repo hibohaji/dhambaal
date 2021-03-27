@@ -1,0 +1,33 @@
+{% extends "layout/base.html" %}
+ {% block content %}
+{%from "macros.html" import section_heading %}
+{{section_heading(title="Posts", link="dashboard.create_post", btn_text="Create Post")}}
+<table class="table box">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Publish</th>
+      <th>Date</th>
+     <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for post in posts%} 
+    <tr>
+    <td>{{post.id}}</td>
+      <td><a href="#" >
+      {{post.title}}
+      </td>
+      <td>{{post.description}}</td>
+      <td>{{post.category}}</td>
+      <td>{{post.published}}</td>
+      <td>{{post.create_at}}</td>
+      <td><a href="{{ url_for('dashboard.delete_post',id=post.id) }}">Delete</a> | <a href="{{ url_for('dashboard.update_post',id=post.id) }}">Edit</a></td>
+    </tr>
+    {%endfor%}
+    </tbody>
+    </table>
+    {% endblock %}

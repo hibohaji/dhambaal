@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+ {% block content %}
+{%from "macros.html" import section_heading %}
+{{section_heading(title="Categories", link="dashboard.create_category", btn_text="Create category")}}
+<table class="table box">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date</th>
+     <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for category in categories%} 
+    <tr>
+    <td>{{category.id}}</td>
+      <td><a href="#" >{{category.name}}
+      </td>
+      <td>{{category.description}}</td>
+      <td>{{category.date}}</td>
+      <td><a href="{{ url_for('dashboard.delete_category',id=category.id) }}">Delete</a> | <a href="{{ url_for('dashboard.update_category',id=category.id) }}">Edit</a></td>
+    </tr>
+    {%endfor%}
+    </tbody>
+    </table>
+    {% endblock %}

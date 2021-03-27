@@ -1,0 +1,89 @@
+<aside class="menu">
+    <a class="button is-primary" href="{{url_for('dashboard.create_post')}}">
+        <i class="material-icons pr-2">add_circle_outline</i>Create New Post
+    </a>
+    <p class="menu-label">Dashboard</p>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('dashboard.index')}}" class="is-active">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">dashboard</i>
+                    </span>
+                    <span>Dashboard</span>
+                  </span>
+                </a></li>
+    </ul>
+    <p class="menu-label">Posts</p>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('dashboard.posts')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">notes</i>
+                    </span>
+                    <span>Posts</span>
+                  </span>
+                </a></li>
+    </ul>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('dashboard.create_post')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">post_add</i>
+                    </span>
+                    <span>Add Post</span>
+                  </span>
+                </a></li>
+    </ul>
+
+    <p class="menu-label">Categories</p>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('dashboard.categories')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">category</i>
+                    </span>
+                    <span>Categories</span>
+                  </span>
+                </a></li>
+        
+    </ul>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('dashboard.create_category')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">add_road</i>
+                    </span>
+                    <span>Create Categories</span>
+                  </span>
+                </a></li>
+    </ul>
+    <!-- users -->
+    <p class="menu-label">Users</p>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('auth.users')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">user</i>
+                    </span>
+                    <span>Users</span>
+                  </span>
+                </a></li>
+    </ul>
+    <ul class="menu-list">
+        <li>
+            <a href="{{url_for('auth.register_user')}}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="material-icons small pr-2">add_user</i>
+                    </span>
+                    <span>Add User</span>
+                  </span>
+                </a></li>
+    </ul>
+</aside>

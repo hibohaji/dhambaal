@@ -1,0 +1,13 @@
+{% extends "layout/base.html" %}
+ {% block content %}
+<!-- Header Add Form Back -->
+{%from "macros.html" import section_heading %}
+{% from "macros.html" import form_input %}
+{{section_heading(title=name, link="dashboard.categories", btn_text="Back")}}
+<form method="POST" class="box">
+    {{form.csrf_token()}}
+    {{form_input(label=form.name.label,errors=form.name.errors,name=form.name,type='input')}}
+    {{form_input(label=form.description.label,errors=form.description.errors,name=form.description,type='textarea')}}
+    {{form.submit(class="button is-primary")}}
+</form>
+{% endblock %}
