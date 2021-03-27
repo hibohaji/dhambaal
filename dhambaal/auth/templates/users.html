@@ -5,6 +5,7 @@
 <table class="table box">
   <thead>
     <tr>
+      <th>ID</th>
       <th>name</th>
       <th>email</th>
       <th>usurname</th>
@@ -20,8 +21,9 @@
       {{user.name}}
       </td>
       <td>{{user.email}}</td>
-      <td>{{post.username}}</td>
-      <td>{{post.create_at}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.create_at}}</td>
     </tr>
     {%endfor%}
     </tbody>

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, url_for, redirect, flash
 from dhambaal.auth.model import User
 from dhambaal.auth.forms import LoginForm, RegisterForm
 #from werkzeug.security import check_password_hash, generate_password_hash
-from flask_bcrypt import check_password_hash, generate_password_hash
+from flask_bcrypt import generate_password_hash, check_password_hash
 
 
 
@@ -15,7 +15,7 @@ def register_user():
         #if user already login we need to redirect to dashboard
         # TODO1 : check if admin or staff
         # TODO2 : hassh user password
-        use= User(name=form.name.data, email= form.email.data, username=form.username.data,
+        user= User(name=form.name.data, email= form.email.data, username=form.username.data,
                     password= generate_password_hash(form.password.data).decode('utf-8'))
 
         if User.validate_email(form.email.data):
@@ -25,7 +25,7 @@ def register_user():
         if User.validate_username(form.username.data):
             flash('Username already taken, please choose diffrent one', 'is-warning')
             return redirect(url_for('auth.register_user'))
-        user.save_db()
+        user.save()
         flash("user created successfully", 'is-success')
         return redirect(url_for("auth.users"))
     return render_template('register.html', form=form)

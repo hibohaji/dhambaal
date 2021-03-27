@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
         if email:
             return True
     @classmethod
-    def valiate_username(cls, username):
+    def validate_username(cls, username):
         username = User.query.filter_by(username=username).first()
         if username:
             return True
