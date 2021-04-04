@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, url_for, redirect, flash,
 from dhambaal.dashboard.models.Post import Post
 from dhambaal.dashboard.models.Categories import Category
 from dhambaal.dashboard.form import PostForm, CatgoryForm
+from flask_login import login_required
 
 # Dashboard Blueprint
 dashboard = Blueprint("dashboard", __name__,
@@ -9,17 +10,20 @@ dashboard = Blueprint("dashboard", __name__,
 
 
 @dashboard.route("/")
+@login_required
 def index():
     return render_template("dashboard.html")
 
 
 @dashboard.route("/posts/")
+@login_required
 def posts():
     posts = Post.query.all()
     return render_template("posts/posts.html", posts=posts)
 
 
 @dashboard.route("/create-post/", methods=['GET', 'Post'])
+@login_required
 def create_post():
     form = PostForm()
     if form.validate_on_submit():
@@ -37,6 +41,7 @@ def create_post():
 
 
 @dashboard.route("/post/<int:id>/update", methods=['GET', 'Post'])
+@login_required
 def update_post(id):
     post = Post.query.get_or_404(id)
     form = PostForm()
@@ -58,8 +63,8 @@ def update_post(id):
     return render_template("posts/create_update.html", form=form, title="Update Post")
 
 
-
 @dashboard.route("/post/<int:id>/delete")
+@login_required
 def delete_post(id):
     post = Post.query.get_or_404(id)
     if post:
@@ -70,43 +75,14 @@ def delete_post(id):
 
 
 @dashboard.route("/categories/")
+@login_required
 def categories():
     categories = Category.query.all()
     return render_template("categories/categories.html", categories=categories)
 
 
-@dashboard.route("/create-category" , methods=['GET', 'Post'])
+@dashboard.route("/create-category")
+@login_required
 def create_category():
-    form = CatgoryForm()
-    if form.validate_on_submit():
-        name = form.data.get('name')
-        description = form.data.get('description')
-        category = Category(name=name, description=description)
-        category.save_to_db()
-        flash("Category created successfully", 'is-success')
-        return redirect(url_for('dashboard.categories'))
-    return render_template("categories/create_update.html",form=form, name="Create Category")
 
-@dashboard.route("/category/<int:id>/update", methods=['GET', 'Post'])
-def update_category(id):
-    category = Category.query.get_or_404(id)
-    form = CatgoryForm()
-    if form.validate_on_submit():
-        category.name = form.name.data
-        category.description = form.description.data
-        category.update()
-        flash("Category updated successfully", 'is-success')
-        return redirect(url_for('dashboard.categories'))
-    elif request.method == 'GET':
-        form.name.data = category.name
-        form.description.data = category.description
-    return render_template("categories/create_update.html", form=form, title="Update Categories")
-
-@dashboard.route("/category/<int:id>/delete")
-def delete_category(id):
-    category = Category.query.get_or_404(id)
-    if category:
-        category.delete()
-        flash("Category deleted successfully", "is-success")
-        return redirect(url_for('dashboard.categories'))
-    return render_template("categories/categories.html")
+    return render_template("categories/create_category.html")

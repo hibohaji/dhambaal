@@ -1,26 +1,46 @@
-{% extends "base.html" %}
+% extends "base.html" %}
 {%block content%}
-{% from 'helpers/form_input.html' import form_input%}
+{% from 'macros.html' import render_input%}
+{% from 'macros.html' import render_input%}
 <div class="columns">
     {%include 'login_side_left.html'%}
     <!-- Login side left -->
-    <div class="column">
-    <!-- Display Flashed Messages -->
    
+ 
+    <div class="column">
+    <div class="login-side-right">
+       
+    <!-- Display Flashed Messages -->
+    {%with messages = get_flashed_messages(with_categories=true) %}
+              {%if messages%}
+              {%for category, message in messages%}
+              <article class="message {{category}}" id="alerts">
+                <div class="message-body">
+                    {{message}}
+                </div>
+              </article>
+
+        {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <div class="container">
+        <div class="auth-header" >
+            <h2 class="title is-2 has-text-grey-light">Login Form</h2>
+        </div>
     <form method="POST">
         {{form.csrf_token()}}
-        {{form_input(label=form.email.label,errors=form.email.errors,name=form.email,type='input')}}
-        {{form_input(label=form.password.label,errors=form.password.errors,name=form.password,type='input')}}
+        {{render_input(form.email)}}
+        {{render_input(form.password)}}
+        <div class="forget-password">
         {{form.submit(class="button is-primary")}}
+        <a href="#">Forget Password</a>
+        </div>
     </form>
-
+    
+    </div>
+    </div>
     </div>
 
 
 </div>
 {%endblock content%}
-
-
-
-
-

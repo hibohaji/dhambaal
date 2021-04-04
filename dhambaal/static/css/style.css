@@ -39,3 +39,25 @@
   
 }
 
+.login-side-left{
+    height: 93vh;
+    
+}
+
+form{
+    margin-top: 2rem;
+    width:80%;
+    margin:auto;
+}
+.auth-header{
+    margin-top: 4rem;
+    padding-left: 3.5rem;
+    padding-bottom: 2rem;
+}
+.has-background-primary{
+    background:rgb(28, 6, 80)  !important;
+}
+.forget-password{
+    display:flex;
+    justify-content: space-between;
+}

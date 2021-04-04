@@ -11,6 +11,7 @@ flask-wtf = "*"
 email-validator = "*"
 flask-login = "*"
 flask-bcrypt = "*"
+flask-mail = "*"
 
 [dev-packages]
 autopep8 = "*"
